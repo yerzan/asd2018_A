@@ -196,232 +196,448 @@
 </div>
 
 <script>
-    // Baza pytań (wszystkie 36 z Twoich zdjęć)
     const questions = [
-        // --- EFEKT W1 ---
-        {
-            cat: "W1 - Złożoność",
-            q: "Jeśli funkcja kosztu algorytmu rekurencyjnego to C(n) = C(n/2) + 1 dla n > 1, to złożoność jest rzędu:",
-            options: ["Θ(1)", "Θ(n)", "Θ(log n)", "Θ(n log n)"],
-            correct: 2 // C
-        },
-        {
-            cat: "W1 - Złożoność",
-            q: "Jeśli złożoności 3 algorytmów to odpowiednio: Θ(n²), Θ(log n), Θ(2^n), to są to algorytmy:",
-            options: ["wielomianowy, logarytmiczny, potęgowy", "kwadratowy, logarytmiczny, dwójkowy/wykładniczy", "kwadratowy, logarytmiczny, liniowy", "żadna z odpowiedzi"],
-            correct: 1 // B
-        },
-        {
-            cat: "W1 - Klasy problemów",
-            q: "Klasa problemów NP, do której każdy inny problem NP się redukuje, to:",
-            options: ["Klasa P", "Klasa NP", "NP-trudne", "NP-zupełne"],
-            correct: 3 // D
-        },
-        {
-            cat: "W1 - Efektywność",
-            q: "Uszeregowanie złożoności od najwolniejszych do najszybszych:",
-            options: ["O(n²), O(log n), O(2^n)", "O(2^n), O(n²), O(n log n)", "O(n²), O(log n), O(1)", "O(n²), O(n), O(n log n)"],
-            correct: 1 // B
-        },
-        {
-            cat: "W1 - Inkluzje",
-            q: "Który zestaw inkluzji jest w pełni niepoprawny?",
-            options: ["NP ⊂ P-SPACE...", "P ⊆ NP...", "NP ⊂ P, NP ⊂ NP-zupełne, P-SPACE ⊂ P", "P-SPACE ⊂ P..."],
-            correct: 2 // C (NP podzbiorem P to fałsz/nieznane)
-        },
-        {
-            cat: "W1 - Rekurencja",
-            q: "Które równanie to rekurencja prosta? R1: C(n)=2C(n/3)+1, R2: f(n)=2f(n-1)+1, R3: C(n)=C(n/2)+n+2",
-            options: ["tylko R2", "tylko R3", "R2 i R3", "żadne"],
-            correct: 0 // A
-        },
-        {
-            cat: "W1 - Binary Search",
-            q: "Czy w rekurencyjnym przeszukiwaniu tablicy uporządkowanej warto używać rekurencji rozgałęzionej (dzielić na 2 i szukać w obu)?",
-            options: ["Tak, warto szukać w obu", "Nie, wystarczy szukać tylko w jednej", "Bez znaczenia", "Trudno porównać"],
-            correct: 1 // B
-        },
-        {
-            cat: "W1 - Wykładnicza",
-            q: "Jeśli mam algorytm wykładniczy i bardzo duże dane, co zrobić?",
-            options: ["Zaimplementować i uruchomić", "Szybszy procesor", "Więcej rdzeni", "Żadna z powyższych (nic nie pomoże)"],
-            correct: 3 // D
-        },
-        {
-            cat: "W1 - Pamięć",
-            q: "Jeśli algorytm weryfikuje w pamięci wielomianowej, to czy istnieje algorytm rozwiązujący w pamięci wielomianowej?",
-            options: ["Tak (Tw. Savitcha)", "Tak (Tw. Cooka)", "Nie zawsze", "Trudno powiedzieć"],
-            correct: 0 // A
-        },
 
-        // --- EFEKT W2 ---
-        {
-            cat: "W2 - Struktury",
-            q: "Rzędy złożoności: wstawianie do drzewa, szukanie w tablicy uporządkowanej, usuwanie z tablicy mieszającej:",
-            options: ["Θ(log n), Θ(log n), Θ(1)", "Θ(1), Θ(n), Θ(n)", "Θ(n), Θ(log n), Θ(1)", "Θ(log n), Θ(n), Θ(1)"],
-            correct: 0 // A
-        },
-        {
-            cat: "W2 - Listy",
-            q: "Struktura naturalna do implementacji listy abstrakcyjnej to:",
-            options: ["Tablica dynamiczna", "Tablica mieszająca", "Drzewo binarne", "Lista powiązana"],
-            correct: 3 // D
-        },
-        {
-            cat: "W2 - Grafy",
-            q: "Reprezentacja grafu jako macierz kwadratowa z informacją o krawędziach:",
-            options: ["Metoda sąsiadów", "Metoda sąsiedztwa", "Metoda listy sąsiedztwa", "Żadna z wymienionych (Macierz sąsiedztwa)"],
-            correct: 3 // D
-        },
-        {
-            cat: "W2 - Usuwanie",
-            q: "Najszybsza operacja usuwania elementu (mając do niego dostęp):",
-            options: ["Tablica dynamiczna", "Uporządkowana tablica", "Zrównoważone drzewo", "Lista powiązana"],
-            correct: 3 // D
-        },
-        {
-            cat: "W2 - Wyszukiwanie",
-            q: "Najwolniejsza operacja wyszukiwania:",
-            options: ["Tablica dynamiczna (nieuporządkowana)", "Uporządkowana tablica", "Zrównoważone drzewo", "Tablica mieszająca"],
-            correct: 0 // A (O(n))
-        },
-        {
-            cat: "W2 - Wstawianie",
-            q: "Najwolniejsza operacja wstawiania:",
-            options: ["Tablica dynamiczna", "Uporządkowana lista powiązana", "Zrównoważone drzewo", "Tablica mieszająca"],
-            correct: 1 // B (bo trzeba znaleźć miejsce O(n))
-        },
-        {
-            cat: "W2 - Zastosowanie",
-            q: "Potrzeba: szybkie wstawianie, oszczędność pamięci. Szukanie nieistotne.",
-            options: ["Tablica dynamiczna", "Lista powiązana", "Tablica mieszająca", "Drzewo binarne"],
-            correct: 1 // B
-        },
-        {
-            cat: "W2 - Zastosowanie",
-            q: "Potrzeba: oszczędność pamięci i uporządkowanie. Szybkość operacji nieistotna.",
-            options: ["Tablica dynamiczna uporządkowana", "Lista powiązana uporządkowana", "Tablica mieszająca", "Drzewo binarne"],
-            correct: 0 // A
-        },
-        {
-            cat: "W2 - Zastosowanie",
-            q: "Potrzeba: szybkie wstawianie. Reszta nieistotna.",
-            options: ["Tablica dynamiczna", "Lista powiązana", "Tablica mieszająca", "Drzewo binarne"],
-            correct: 1 // B (zawsze O(1) na start)
-        },
+    {
+    cat:"W1",
+    q:"1. (W1/3) Jeśli funkcja kosztu czasowego pewnego algorytmu iteracyjnego jest postaci C(n)=4n^2+2n+3 (gdzie n to rozmiar charakterystyczny zadania) i algorytm wykorzystuje zawsze pamięć w postaci 8 zmiennych, to złożoność obliczeniowa czasowa tego algorytmu jest rzędu:",
+    options:[
+    "A. Θ(1)",
+    "B. Θ(n)",
+    "C. Θ(n^2)",
+    "D. Θ(n^3)"
+    ],
+    correct:2
+    },
 
-        // --- EFEKT W3 ---
-        {
-            cat: "W3 - Sortowanie",
-            q: "Sortowanie przez wybór jest metodą:",
-            options: ["dokładną", "aproksymacyjną", "dokładną i aproksymacyjną", "trudno powiedzieć"],
-            correct: 0 // A
-        },
-        {
-            cat: "W3 - Metody",
-            q: "Dzielenie tablicy na dwie części, rekurencyjne sortowanie i scalanie to:",
-            options: ["Bąbelkowa", "Przez wybór", "Przez wstawianie", "Żadna (Scalanie)"],
-            correct: 3 // D
-        },
-        {
-            cat: "W3 - Grafy",
-            q: "Odwiedzanie wierzchołków warstwami (tak samo odległymi):",
-            options: ["BFS (wszerz)", "DFS (w głąb)", "Programowanie dynamiczne", "Żadna"],
-            correct: 0 // A
-        },
-        {
-            cat: "W3 - Optymalność",
-            q: "Zgodnie z dolnym ograniczeniem sortowania, optymalny jest:",
-            options: ["Przez scalanie", "Przez wybór", "Przez wstawianie", "Żaden"],
-            correct: 0 // A
-        },
-        {
-            cat: "W3 - Algorytmy",
-            q: "Które stwierdzenie jest fałszywe:",
-            options: ["Zachłanny nie działa -> Monte Carlo", "Błądzenie losowe to Monte Carlo", "Tylko brute force daje dokładne wyniki", "Dynamik to dziel i zwyciężaj"],
-            correct: 2 // C (Jest fałszywe, bo inne też dają dokładne)
-        },
-        {
-            cat: "W3 - Pamięć Grafu",
-            q: "BFS: minimalny wpływ rozmiaru wierzchołków na pamięć. Używamy:",
-            options: ["Listy sąsiedztwa", "Macierzy sąsiedztwa", "Obu", "Nie ma wpływu"],
-            correct: 0 // A
-        },
-        {
-            cat: "W3 - Duża przestrzeń",
-            q: "Bardzo duża przestrzeń stanów, nie zależy nam na dokładnym rozwiązaniu:",
-            options: ["Brutalna siła", "Metoda Monte Carlo", "Dziel i zwyciężaj", "Żadna"],
-            correct: 1 // B
-        },
-        {
-            cat: "W3 - Komiwojażer",
-            q: "TSP dla 10000 miast. Jaka metoda NIE może być użyta?",
-            options: ["Nawroty", "Zachłanny", "Monte Carlo", "Brutalna siła (wszystkie permutacje)"],
-            correct: 3 // D
-        },
-        {
-            cat: "W3 - Sortowanie liczb",
-            q: "Sortowanie liczb całkowitych 0..k-1. Najlepsza metoda:",
-            options: ["Przez wybór", "Przez zliczanie", "Przez scalanie", "Szybkie"],
-            correct: 1 // B
-        },
+    {
+    cat:"W1",
+    q:"2. (W1/3) Jeśli złożoności obliczeniowe 3 algorytmów są odpowiednio rzędu: Θ(n^2), Θ(log n), Θ(2^n), to są to algorytmy:",
+    options:[
+    "A. kwadratowy, logarytmiczny, wykładniczy",
+    "B. wielomianowy, logarytmiczny, potęgowy",
+    "C. kwadratowy, logarytmiczny, dwójkowy",
+    "D. żadna z odpowiedzi nie jest do końca prawdziwa."
+    ],
+    correct:0
+    },
 
-        // --- EFEKT W4 ---
-        {
-            cat: "W4 - Poprawność",
-            q: "Metoda dowodzenia częściowej poprawności:",
-            options: ["liczników iteracji", "malejących wielkości", "niezmienników iteracji", "żadna"],
-            correct: 2 // C
-        },
-        {
-            cat: "W4 - Definicje",
-            q: "Warunek opisujący własność poprawnych wyników:",
-            options: ["rozpoczęcia", "początkowy", "końcowy", "stopu"],
-            correct: 2 // C
-        },
-        {
-            cat: "W4 - Własności",
-            q: "Dla danych spełniających warunek początkowy obliczenie jest skończone. To własność:",
-            options: ["początkowa", "określoności", "końcowa", "żadna (stopu)"],
-            correct: 3 // D
-        },
-        {
-            cat: "W4 - Stop",
-            q: "Metoda dowodu stopu (wielkość malejąca ograniczona z dołu):",
-            options: ["liczników iteracji", "malejących wielkości", "niezmienników iteracji", "żadna"],
-            correct: 1 // B
-        },
-        {
-            cat: "W4 - Określoność",
-            q: "Operacje niezagrażające określoności:",
-            options: ["dodawanie, odejmowanie, mnożenie", "mnożenie, dzielenie, pierwiastek", "pierwiastek, dzielenie...", "logarytm..."],
-            correct: 0 // A
-        },
-        {
-            cat: "W4 - Niezmienniki",
-            q: "Dowód częściowej poprawności metodą niezmienników polega na:",
-            options: ["wykazaniu indukcyjnym...", "sprawdzaniu w miejscach...", "porównaniu wyników...", "żadne"],
-            correct: 0 // A
-        },
-        {
-            cat: "W4 - Błędy",
-            q: "Program się zawiesił. Nie sprawdzono własności:",
-            options: ["częściowej poprawności", "stopu", "określoności", "żadnej"],
-            correct: 1 // B
-        },
-        {
-            cat: "W4 - Błędy",
-            q: "Program policzył minimum zamiast maksimum. Nie sprawdzono:",
-            options: ["częściowej poprawności", "stopu", "określoności", "żadnej"],
-            correct: 0 // A
-        },
-        {
-            cat: "W4 - Błędy",
-            q: "Błąd pierwiastka z liczby ujemnej. Nie sprawdzono:",
-            options: ["częściowej poprawności", "stopu", "określoności", "żadnej"],
-            correct: 2 // C
-        }
-    ];
+    {
+    cat:"W1",
+    q:"3. (W1/3) Klasa problemów z punktu widzenia złożoności obliczeniowej zawierająca problemy decyzyjne, z których każdy problem należy do klasy NP, nie jest dla niego znany algorytm rozwiązujący ten problem w czasie wielomianowym oraz dowolny problem należący do NP może być do niego zredukowany w czasie wielomianowym nazywa się:",
+    options:[
+    "A. klasa P problemów",
+    "B. klasa NP problemów",
+    "C. klasa problemów NP-trudnych",
+    "D. klasa problemów NP-zupełnych."
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W1",
+    q:"4. (W1/4) Które z poniższych uszeregowań rzędów złożoności obliczeniowej od najmniej efektywnych do najbardziej efektywnych czasowo jest poprawne:",
+    options:[
+    "A. O(n^2), O(log n), O(2^n)",
+    "B. O(2^n), O(n^2), O(n log n)",
+    "C. O(n^2), O(log n), O(1)",
+    "D. O(n^2), O(n), O(n log n)"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W1",
+    q:"5. (W1/4) Który z poniższych zestawów inkluzji jest w pełni niepoprawny:",
+    options:[
+    "A. NP⊂P, NP⊂NP-zupełne, P-SPACE⊂P",
+    "B. P⊂NP, NP-zupełne⊂NP, NP-SPACE⊂P-SPACE",
+    "C. NP⊂P-SPACE, NP-zupełne⊂NP-trudne, P⊂NP-trudne",
+    "D. P-SPACE⊂P, NP-trudne⊂NP-zupełne, NP⊂NP-trudne"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W1",
+    q:"6. (W1/4) Które z podanych równań rekurencyjnych można traktować jako reprezentację złożoności obliczeniowej czasowej algorytmu z rekurencją prostą:",
+    options:[
+    "A. tylko równanie R2",
+    "B. tylko równanie R3",
+    "C. równania R2 i R3",
+    "D. żadne"
+    ],
+    correct:2
+    },
+
+    {
+    cat:"W1",
+    q:"7. (W1/5) Czy w przypadku algorytmu rekurencyjnego przeszukiwania tablicy uporządkowanej celem znalezienie pewnego jej elementu jest sens wykorzystywać rekurencję rozgałęzioną?",
+    options:[
+    "A. tak, bo warto podzielić tablice np. na 2 części i osobno (rekurencyjnie) szukać elementu w obydwu częściach",
+    "B. nie, bo po podzieleniu tablicy np. na 2 części wystarczy szukać elementu tylko w jednej z nich (rekurencja prosta)",
+    "C. w tym przypadku wybór rekurencji prostej czy rozgałęzionej nie ma znaczenia, bo złożoność obliczeniowa w obydwu przypadkach jest taka sama",
+    "D. trudno porównać, bo nie podano o jakie konkretnie algorytmy chodzi"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W1",
+    q:"8. (W1/5) Jeśli dla mojego problemu znam algorytm, który ma wykładniczą złożoność obliczeniową czasową, to co mogę zrobić, aby móc rozwiązywać ten problem za pomocą komputera dla dużych rozmiarów problemu?",
+    options:[
+    "A. zaimplementować ten algorytm w postaci programu i go uruchomić",
+    "B. użyć komputera z dużą częstotliwością taktowania procesora",
+    "C. użyć komputera z większą liczbą rdzeni lub procesorów",
+    "D. wymyśleć i zaimplementować algorytm o niższej złożoności czasowej"
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W1",
+    q:"9. (W1/5) Jeśli dla mojego problemu znam algorytm, który weryfikuje poprawność rozwiązania dla konkretnych danych wejściowych w pamięci ograniczonej przez pewien wielomian zależny od rozmiaru problemu, to czy da się znaleźć algorytm, który rozwiązuje ten problem w pamięci wielomianowej?",
+    options:[
+    "A. tak i mówi o tym twierdzenie Cooka",
+    "B. nie, bo w takiej sytuacji, z punktu widzenia złożoności obliczeniowej pamięciowej, algorytm może być wykładniczy",
+    "C. tak i mówi o tym twierdzenie Savitcha",
+    "D. trudno powiedzieć, bo te dwa problemy są różne"
+    ],
+    correct:2
+    },
+
+    /********************* W2 *********************/
+
+    {
+    cat:"W2",
+    q:"10. (W2/3) Podaj rzędy złożoności obliczeniowej następujących operacji: wstawiania do zrównoważonego drzewa binarnego, wyszukiwania w tablicy dynamicznej uporządkowanej, usuwania z tablicy mieszającej:",
+    options:[
+    "A. Θ(log n), Θ(log n), Θ(1)",
+    "B. Θ(1), Θ(n), Θ(n)",
+    "C. Θ(n), Θ(log n), Θ(1)",
+    "D. Θ(log n), Θ(n), Θ(1)"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W2",
+    q:"11. (W2/3) Strukturą konkretną nadającą się w sposób naturalny do implementacji abstrakcyjnej listy jest:",
+    options:[
+    "A. tablica dynamiczna",
+    "B. tablica mieszająca",
+    "C. drzewo binarne",
+    "D. lista powiązana"
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W2",
+    q:"12. (W2/3) Metoda reprezentacji grafów polegająca na tym, że budujemy macierz kwadratową, w której przechowujemy informacje o ewentualnych krawędziach pomiędzy sąsiednimi wierzchołkami w grafie nazywa się:",
+    options:[
+    "A. metodą sąsiadów",
+    "B. metodą sąsiedztwa",
+    "C. metodą listy sąsiedztwa",
+    "D. żadna z wymienionych"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W2",
+    q:"13. (W2/4) Która z poniższych implementacji zbioru będzie miała najszybszą operację usuwania elementu?",
+    options:[
+    "A. za pomocą tablicy dynamicznej",
+    "B. za pomocą uporządkowanej tablicy dynamicznej",
+    "C. za pomocą zrównoważonego drzewa binarnego",
+    "D. za pomocą listy powiązanej"
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W2",
+    q:"14. (W2/4) Która z poniższych implementacji zbioru będzie miała najwolniejszą operację wyszukiwania elementów?",
+    options:[
+    "A. za pomocą tablicy dynamicznej",
+    "B. za pomocą uporządkowanej tablicy dynamicznej",
+    "C. za pomocą zrównoważonego drzewa binarnego",
+    "D. za pomocą tablicy mieszającej"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W2",
+    q:"15. (W2/4) Która z poniższych implementacji zbioru będzie miała najwolniejszą operację wstawiania elementów?",
+    options:[
+    "A. za pomocą tablicy dynamicznej",
+    "B. za pomocą uporządkowanej listy powiązanej",
+    "C. za pomocą zrównoważonego drzewa binarnego",
+    "D. za pomocą tablicy mieszającej"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W2",
+    q:"16. (W2/5) Jeśli do reprezentowania danych potrzeba struktury o możliwie szybkim wstawianiu i oszczędności pamięci, a szybkość wyszukiwania i usuwania oraz uporządkowanie elementów w strukturze nie są istotne, to do implementacji takiej struktury zalecane jest użycie:",
+    options:[
+    "A. tablicy dynamicznej",
+    "B. listy powiązanej",
+    "C. tablicy mieszającej",
+    "D. drzewa binarnego"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W2",
+    q:"17. (W2/5) Jeśli do reprezentowania danych potrzeba oszczędnej pamięciowo i uporządkowanej wewnętrznie struktury, a szybkość wstawiania, wyszukiwania i usuwania nie są istotne, to do implementacji takiej struktury zalecane jest użycie:",
+    options:[
+    "A. tablicy dynamicznej uporządkowanej",
+    "B. listy powiązanej uporządkowanej",
+    "C. tablicy mieszającej",
+    "D. drzewa binarnego"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W2",
+    q:"18. (W2/5) Jeśli do reprezentowania danych potrzeba struktury o możliwie szybkim wyszukiwaniu i wstawianiu, a szybkość usuwania oraz uporządkowanie elementów w strukturze oraz oszczędność pamięci nie są istotne, to do implementacji takiej struktury zalecane jest użycie:",
+    options:[
+    "A. tablicy dynamicznej",
+    "B. listy powiązanej",
+    "C. tablicy mieszającej",
+    "D. drzewa binarnego"
+    ],
+    correct:2
+    },
+
+    /********************* W3 *********************/
+
+    {
+    cat:"W3",
+    q:"19. (W3/3) Metoda sortowania przez wybór elementów w tablicy n-elementowej jest metodą:",
+    options:[
+    "A. dokładną",
+    "B. aproksymacyjną",
+    "C. dokładną i aproksymacyjną",
+    "D. trudno powiedzieć"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W3",
+    q:"20. (W3/3) Metoda sortowania tablicy, która polega na podzieleniu tablicy danych na dwie równe części, rekurencyjnym sortowaniu osobno każdej z nich oraz ich scaleniu to metoda:",
+    options:[
+    "A. bąbelkowa",
+    "B. przez wybór",
+    "C. przez wstawianie",
+    "D. żadna z wymienionych"
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W3",
+    q:"21. (W3/3) Metoda przeszukiwania grafów polegająca na odwiedzeniu wszystkich wierzchołków osiągalnych z wierzchołka początkowego warstwami, gdzie dana warstwa oznacza wierzchołki tak samo odległe od zadanego wierzchołka jest metodą:",
+    options:[
+    "A. przeszukiwania grafu wszerz",
+    "B. przeszukiwania grafu w głąb",
+    "C. programowania dynamicznego",
+    "D. żadna z wymienionych"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W3",
+    q:"22. (W3/4) Zgodnie z twierdzeniem na temat dolnego ograniczenia na pesymistyczny czas sortowania, algorytmem sortowania o optymalnej złożoności obliczeniowej jest algorytm:",
+    options:[
+    "A. przez scalanie",
+    "B. przez wybór",
+    "C. przez wstawianie",
+    "D. żaden z wymienionych"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W3",
+    q:"23. (W3/4) Które z poniższych stwierdzeń dotyczących metod konstrukcji algorytmów jest fałszywe:",
+    options:[
+    "A. jeśli algorytm zachłanny nie jest efektywny czasowo dla danego problemu, to sensowne jest zastosować metodę Monte Carlo",
+    "B. metoda błądzenia losowego jest rodzajem metody Monte Carlo",
+    "C. oprócz metody brutalnej siły, żadna inna metoda nie potrafi znaleźć tak dokładnych rozwiązań problemów",
+    "D. metoda programowania dynamicznego jest odmianą metody dziel i zwyciężaj"
+    ],
+    correct:2
+    },
+
+    {
+    cat:"W3",
+    q:"24. (W3/4) Jeśli w algorytmie przeszukiwania grafów wszerz zależy nam na tym, aby rozmiar zbioru wierzchołków miał jak najmniejszy wpływ na wzrost złożoności obliczeniowej pamięciowej, to do reprezentacji grafu używamy:",
+    options:[
+    "A. listy sąsiedztwa",
+    "B. macierzy sąsiedztwa",
+    "C. lista lub macierz sąsiedztwa (są tak samo efektywne)",
+    "D. reprezentacja grafu nie ma tutaj wpływu"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W3",
+    q:"25. (W3/5) Jeśli przestrzeń stanów dla danego problemu jest bardzo duża, ale nie zależy nam na rozwiązaniu dokładnym problemu, to należy stosować metody:",
+    options:[
+    "A. metodę brutalnej siły",
+    "B. metodę Monte Carlo",
+    "C. metodę dziel i zwyciężaj",
+    "D. żadna z wymienionych"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W3",
+    q:"26. (W3/5) Jeśli problem komiwojażera dotyczy 10000 miast, to jaka metoda nie może być użyta do rozwiązania tego problemu?",
+    options:[
+    "A. metoda przeszukiwania z nawrotami",
+    "B. algorytm zachłanny",
+    "C. metoda Monte Carlo",
+    "D. metoda brutalnej siły (przeglądanie wszystkich permutacji miast)"
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W3",
+    q:"27. (W3/5) Jeśli elementami sortowanej tablicy są liczby całkowite z przedziału 0..k-1 dla pewnego naturalnego k, to jaka metoda sortowania będzie najbardziej efektywna czasowo dla tej tablicy:",
+    options:[
+    "A. metoda sortowania przez wybór",
+    "B. metoda sortowania przez zliczanie",
+    "C. metoda sortowania przez scalanie",
+    "D. metoda szybkiego sortowania"
+    ],
+    correct:1
+    },
+
+    /********************* W4 *********************/
+
+    {
+    cat:"W4",
+    q:"28. (W4/3) Która z poniższych metod jest metodą dowodzenia częściowej poprawności algorytmów:",
+    options:[
+    "A. metoda liczników iteracji",
+    "B. metoda malejących wielkości",
+    "C. metoda niezmienników iteracji",
+    "D. żadna z wymienionych"
+    ],
+    correct:2
+    },
+
+    {
+    cat:"W4",
+    q:"29. (W4/3) Warunek logiczny, który opisuje własność poprawnych wyników algorytmu oraz ich związek z danymi nazywa się:",
+    options:[
+    "A. warunkiem rozpoczęcia",
+    "B. warunkiem początkowym",
+    "C. warunkiem końcowym",
+    "D. warunkiem stopu"
+    ],
+    correct:2
+    },
+
+    {
+    cat:"W4",
+    q:"30. (W4/3) Własność algorytmu polegająca na tym, że dla każdych danych wejściowych spełniających warunek początkowy obliczenie jest skończone nosi nazwę:",
+    options:[
+    "A. własności początkowej",
+    "B. własności określoności",
+    "C. własności końcowej",
+    "D. żadna z wymienionych"
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W4",
+    q:"31. (W4/4) Metoda dowodu własności stopu algorytmu z pętlą opierająca się na założeniu, że jeśli w kolejnych iteracjach pętli dana wielkość jest coraz mniejsza i dodatkowo jest ograniczona od dołu, to pętla kiedyś się zakończy, co oznacza, że obliczenie będzie skończone, nazywa się:",
+    options:[
+    "A. metodą liczników iteracji",
+    "B. metodą malejących wielkości",
+    "C. metodą niezmienników iteracji",
+    "D. żadna z wymienionych"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W4",
+    q:"32. (W4/4) Która z poniższych trójek operacji zawiera tylko operacje, które nie zagrażają własności określoności algorytmu (bez uwzględniania problemu przekroczenia zakresu wartości dla typu liczbowego):",
+    options:[
+    "A. dodawanie, odejmowanie, mnożenie",
+    "B. mnożenie, dzielenie, pierwiastkowanie",
+    "C. pierwiastkowanie, dzielenie, logarytmowanie",
+    "D. logarytmowanie, mnożenie, dodawanie"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W4",
+    q:"33. (W4/4) Dowód częściowej poprawności algorytmu względem warunku początkowego i końcowego metodą niezmienników iteracji polega na:",
+    options:[
+    "A. wykazaniu indukcyjnym ze względu na liczbę iteracji pętli, że po każdej iteracji pętli spełniony jest warunek końcowy",
+    "B. sprawdzaniu w określonych miejscach algorytmu czy spełniona jest pewna funkcja zdaniowa zależna od wartości m, gdzie przez m rozumiemy m-tą iterację algorytmu",
+    "C. sprawdzaniu poprawności uzyskanego wyniku przez algorytm w oparciu o porównanie ze znanym poprawnym wynikiem uzyskanym inną metodą",
+    "D. żadne z powyższych wyjaśnień nie jest do końca poprawne"
+    ],
+    correct:3
+    },
+
+    {
+    cat:"W4",
+    q:"34. (W4/5) Jeśli program, który sprawdza występowanie pewnego elementu w tablicy zawiesił się, to znaczy że nie sprawdzono dla tego programu własności:",
+    options:[
+    "A. częściowej poprawności",
+    "B. stopu",
+    "C. określoności",
+    "D. żadnej z wymienionych"
+    ],
+    correct:1
+    },
+
+    {
+    cat:"W4",
+    q:"35. (W4/5) Jeśli program, który ma wyliczać maksimum elementów pewnego zbioru liczb całkowitych policzył minimum tego zbioru, to znaczy że nie sprawdzono dla tego programu własności:",
+    options:[
+    "A. częściowej poprawności",
+    "B. stopu",
+    "C. określoności",
+    "D. żadnej z wymienionych"
+    ],
+    correct:0
+    },
+
+    {
+    cat:"W4",
+    q:"36. (W4/5) Jeśli w programie komputerowym zdarzył się błąd próby wyliczenia pierwiastka kwadratowego z liczby ujemnej, to znaczy że nie sprawdzono dla tego programu własności:",
+    options:[
+    "A. częściowej poprawności",
+    "B. stopu",
+    "C. określoności",
+    "D. żadnej z wymienionych"
+    ],
+    correct:2
+    },
+
+];
+
 
     let currentIdx = 0;
     let correctCount = 0;
